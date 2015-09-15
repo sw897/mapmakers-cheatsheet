@@ -1,32 +1,32 @@
-# 手上是什么数据类型?
+# 什么数据类型?
 
-## 点数据
+## 点
 
 - 多大数据量?
-  - 数据量并不很大
+  - 少量
     - 把数据转为 [GeoJSON](http://geojson.org/) 格式，使用 [Leaflet](http://leafletjs.com/) 发布地图
-  - 很多散乱点, 但是点并不是很重要
+  - 大量, 但是点并不是很重要
     - 使用 [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) 把点集群(cluster)起来
-  - 很多点，并且有些值可以聚合(aggregate)起来
+  - 大量，并且有些值可以聚合(aggregate)起来
     - Create hexbins of your points with the 把数据使用 [QGIS hexbin](https://www.mapbox.com/blog/binning-alternative-point-maps/) 插件创建hexbins, 生成多边形. 参照多边形数据处理
-  - 很多表示存在状态的点 - 像tweets数据
+  - 大量表示存在状态的点 - 像tweets数据
     - 使用 [Leaflet.heat](https://github.com/Leaflet/Leaflet.heat) 或 [QGIS heatmap](http://qgis.spatialthoughts.com/2012/07/tutorial-making-heatmaps-using-qgis-and.html) 插件生成热力图. 如果选择 QGIS heatmap, 参照 Raster 数据处理.
   - 海量数据, 并且不需要 label , 使用 [datamaps](https://github.com/ericfischer/datamaps).
 
-## 多边形类型
+## 多边形
 
 - 多大数据量?
-  - 并不很大
+  - 少量
     - 把数据转为 [GeoJSON](http://geojson.org/) 格式，使用 [Leaflet](http://leafletjs.com/) 发布地图
-  - 很大量, 并且多边形复杂，有大量必需的细节信息
+  - 大量, 并且多边形复杂，有大量必需的细节信息
     - 使用 [TileMill](https://www.mapbox.com/tilemill/) 渲染，生成使用 [UTFGrid](https://www.mapbox.com/developers/utfgrid/) 的交互地图
     - 使用 [GeoServer](http://geoserver.org/) 的 WMS 与 GetFeatureInfo 接口
-  - 很大量, 但多边形细节信息不必需
+  - 大量, 但多边形细节信息不必需
     - 使用 [TopoJSON](https://github.com/mbostock/topojson) 或 [QGIS](http://www.qgis.org/) 化简多边形
 
-## 属性数据(特征数据)
+## 属性(特征数据)
 
-- 什么数据类型?
+- 什么类型?
   - 数值
     - 使用 [QGIS](http://www.qgis.org/) 取点集中心点，参照点数据处理
     - 归一处理成比例数据后分割多边形区域，参照 比率 类型处理
@@ -56,7 +56,7 @@
       - OpenStreetMap: [Nominatim](http://nominatim.openstreetmap.org/)
       - [Data Science Toolkit](https://github.com/petewarden/dstk) can be useful for local bulk geocoding that would be too much for a hosted service.
 
-## 线数据
+## 线
 
 - 少量数据: 使用 [Leaflet](http://leafletjs.com/)
 - 大量数据, 或需要标注的数据 (如街道)， 使用 [TileMill](https://www.mapbox.com/tilemill/)
@@ -71,7 +71,7 @@
 - 扫描数据
   - 使用 [MapKnitter](http://mapknitter.org/) 进行配准与纠正
 
-## 不能读取的数据格式
+## 不能识别的格式
 
 - 使用 [GDAL](http://www.gdal.org/) ogr2ogr 进行格式转换. 如果没有安装 GDAL，可以使用在线版本 [Ogre](http://ogre.adc4gis.com/)
 - 商业产品:
