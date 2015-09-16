@@ -62,7 +62,7 @@
 - 大量数据, 或需要标注的数据 (如街道)， 使用 [TileMill](https://www.mapbox.com/tilemill/)
 - 海量数据, 或不需要标注的数据，使用 [datamaps](https://github.com/ericfischer/datamaps).
 
-# 栅格数据
+## 栅格数据
 
 - 已经配准与处理好的数据 (卫片或处理后的数据)
   - 使用 [TileMill](https://www.mapbox.com/tilemill/) 渲染地图，在 Leaflet 中使用瓦片
