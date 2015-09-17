@@ -1,4 +1,4 @@
-# 什么数据类型?
+# 根据数据类型操作
 
 ## 点
 
@@ -48,9 +48,9 @@
     - 无编码
       - 查找编码, 或手绘图形
   - 地址
-    - You can't map addresses directly. Geocode them with [OpenRefine](http://openrefine.org/) or
-      [Geo for Google Docs](https://www.mapbox.com/geo-for-google-docs/), and then start at Points
-    - Other Geocoding options:
+    - 地址不能直接上图. 使用 [OpenRefine](http://openrefine.org/) 或
+      [Geo for Google Docs](https://www.mapbox.com/geo-for-google-docs/) 进行地址编码转换成点 , 然后参照点数据处理
+    - 其他的编码服务:
       - US: [US Census](http://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.pdf)
       - Canada: [Geogratis](http://geogratis.gc.ca/site/eng/geoloc)
       - OpenStreetMap: [Nominatim](http://nominatim.openstreetmap.org/)
@@ -95,22 +95,22 @@
 ## 可视化配置
 
 - 投影:
-  - If it's a web map with tiles, use [Spherical Mercator](http://epsg.io/3857)
-  - If using [d3](http://d3js.org/) and not using tiles anywhere, use whatever fits best. Bonus projections are in [d3-geo-projection](https://github.com/d3/d3-geo-projection).
-  - Have a project and not sure what it is? Use [epsg.io](http://epsg.io/3857).
+  - 网络瓦片地图使用选择 [Spherical Mercator](http://epsg.io/3857) 投影
+  - 如果使用 [d3](http://d3js.org/) 并且没有使用瓦片, 则选择最适合的.  [d3-geo-projection](https://github.com/d3/d3-geo-projection) 扩展了很多投影类型.
+  - 如果有投影信息但又不确定是什么类型，可以使用 [epsg.io](http://epsg.io/3857).
 - 配色:
-  - When in doubt, use [ColorBrewer](http://colorbrewer2.org/)
-  - Want to know more? Read [Subtleties of Color](http://earthobservatory.nasa.gov/blogs/elegantfigures/2013/08/05/subtleties-of-color-part-1-of-6/)
+  - 拿不准时用 [ColorBrewer](http://colorbrewer2.org/)
+  - 想了解更多，参考  [Subtleties of Color](http://earthobservatory.nasa.gov/blogs/elegantfigures/2013/08/05/subtleties-of-color-part-1-of-6/)
 - 比例尺:
-  - For any data
-    - Try linear first
-    - Then quantile
-  - For data of rates or compounding values
-    - Try log and power scales
-- 画点:
-  - Start with normal circles with no strokes
-  - Scale points by area, not diameter
-- 整饰:
-  - Only add a north arrow if north isn't up
-  - Always attribute your data, especially [OpenStreetMap](http://www.openstreetmap.org/), to avoid the nerd wrath
-  - If it zooms, add visible zoom controls. Pan isn't necessary, but not everyone has a scroll wheel / multitouch
+  - 所有数据
+    - 优先线性比例尺
+    - 其次分位数
+  - 比率或复合数据
+    - 考虑 log 和 power 比例尺
+- 点标识:
+  - 首先是不区分的圆圈
+  - 根据圆圈面积等比标识
+- 控件:
+  - 只有正北方不指向上时添加指北针
+  - 为数据进行属性说明
+  - 如果支持缩放，则让缩放控件可见，而平移控件则不需要, 毕竟不是所有鼠标都有滚轮
