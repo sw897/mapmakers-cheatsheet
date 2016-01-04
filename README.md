@@ -7,57 +7,63 @@
 ### 点
 
 #### 根据数据量选择
-  - 少量
-     - 把数据转为 [GeoJSON](http://geojson.org/) 格式，使用 [Leaflet](http://leafletjs.com/) 发布地图
-  - 大量,  但是点位信息并不重要
-     - 使用 [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) 把点集群(cluster)起来
-  - 大量, 并且有些值可以聚合(aggregate)起来
-     - 使用 [QGIS hexbin](https://www.mapbox.com/blog/binning-alternative-point-maps/) 插件创建hexbins, 生成多边形. 参照多边形数据处理
-  - 大量, 表示存在状态 - 如比tweets发布位置数据
-     - 使用 [Leaflet.heat](https://github.com/Leaflet/Leaflet.heat) 或 [QGIS heatmap](http://qgis.spatialthoughts.com/2012/07/tutorial-making-heatmaps-using-qgis-and.html) 插件生成热力图. 如果选择 QGIS heatmap, 参照 Raster 数据处理.
- - 海量, 不需要 label , 使用 [datamaps](https://github.com/ericfischer/datamaps)绘制.
+- 少量
+ - 把数据转为 [GeoJSON](http://geojson.org/) 格式，使用 [Leaflet](http://leafletjs.com/) 发布地图
+- 大量,  但是点位信息并不重要
+ - 使用 [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) 把点集群(cluster)起来
+- 大量, 并且有些值可以聚合(aggregate)起来
+ - 使用 [QGIS hexbin](https://www.mapbox.com/blog/binning-alternative-point-maps/) 插件创建hexbins, 生成多边形. 参照多边形数据处理
+- 大量, 表示存在状态 - 如比tweets发布位置数据
+ - 使用 [Leaflet.heat](https://github.com/Leaflet/Leaflet.heat) 或 [QGIS heatmap](http://qgis.spatialthoughts.com/2012/07/tutorial-making-heatmaps-using-qgis-and.html) 插件生成热力图. 如果选择 QGIS heatmap, 参照 Raster 数据处理.
+- 海量, 不需要 label , 使用 [datamaps](https://github.com/ericfischer/datamaps)绘制.
 
 ### 多边形
 
 #### 根据数据量选择
-  - 少量
-     - 把数据转为 [GeoJSON](http://geojson.org/) 格式，使用 [Leaflet](http://leafletjs.com/) 发布地图
-  - 大量, 并且多边形复杂, 有大量必需的细节信息
-     - 使用 [TileMill](https://www.mapbox.com/tilemill/) 渲染，生成使用 [UTFGrid](https://www.mapbox.com/developers/utfgrid/) 的交互地图
-     - 使用 [GeoServer](http://geoserver.org/) 的 WMS 与 GetFeatureInfo 接口
-  - 大量, 但多边形细节信息不必需
-     - 使用 [TopoJSON](https://github.com/mbostock/topojson) 或 [QGIS](http://www.qgis.org/) 化简多边形后使用[Leaflet](http://leafletjs.com/)发布地图
+- 少量
+ - 把数据转为 [GeoJSON](http://geojson.org/) 格式，使用 [Leaflet](http://leafletjs.com/) 发布地图
+- 大量, 并且多边形复杂, 有大量必需的细节信息
+ - 使用 [TileMill](https://www.mapbox.com/tilemill/) 渲染，生成使用 [UTFGrid](https://www.mapbox.com/developers/utfgrid/) 的交互地图
+ - 使用 [GeoServer](http://geoserver.org/) 的 WMS 与 GetFeatureInfo 接口
+- 大量, 但多边形细节信息不必需
+ - 使用 [TopoJSON](https://github.com/mbostock/topojson) 或 [QGIS](http://www.qgis.org/) 化简多边形后使用[Leaflet](http://leafletjs.com/)发布地图
 
 ### 属性(特征数据)
 
 #### 根据数据类型选择
-  - 数值
-    - 使用 [QGIS](http://www.qgis.org/) 取点集或多边形中心点，参照点数据处理
-    - 归一处理成比例数据后分割多边形区域，参照 比率 类型处理
-  - 比率 或 分类
-    - 生成等值线图，小数据量使用 [Leaflet](http://leafletjs.com/) , 大数据量使用 [TileMill](https://www.mapbox.com/tilemill/)
-  - 时序数据 - 与时间相关的值
-    - 如果少于100个样本 - 例如 50 年间按年统计的数据, 使用 [small multiples](http://www.nytimes.com/interactive/2012/07/20/us/drought-footprint.html): 每个样本一张图.
-    - 使用 [Leaflet](http://leafletjs.com/) 或 [d3.js](http://d3js.org/) 生成动画
-    - 海量数据, 使用 [CartoDB  torque](http://blog.cartodb.com/post/66687861735/torque-is-live-try-it-on-your-cartodb-maps-today)。国内可以使用 [极海 GeoHey](https://geohey.com/)。
-  - 多变量数据, 如种群计数
-    - 使用 [englewood](https://github.com/newsapps/englewood) 生成点密度图 [dot density map](http://demographics.coopercenter.org/DotMap/index.html)
-  - 地名数据, 如国家或行政区划名称
-    - 有编码 ID:
-      - ISO2 或 ISO3 编码
+- 数值
+ - 使用 [QGIS](http://www.qgis.org/) 取点集或多边形中心点，参照点数据处理
+ - 归一处理成比例数据后分割多边形区域，参照 比率 类型处理
+- 比率 或 分类
+ - 生成等值线图，小数据量使用 [Leaflet](http://leafletjs.com/) , 大数据量使用 [TileMill](https://www.mapbox.com/tilemill/)
+- 时序数据 - 与时间相关的值
+ - 如果少于100个样本 - 例如 50 年间按年统计的数据, 使用 [small multiples](http://www.nytimes.com/interactive/2012/07/20/us/drought-footprint.html): 每个样本一张图.
+ - 使用 [Leaflet](http://leafletjs.com/) 或 [d3.js](http://d3js.org/) 生成动画
+ - 海量数据, 使用 [CartoDB  torque](http://blog.cartodb.com/post/66687861735/torque-is-live-try-it-on-your-cartodb-maps-today)。国内可以使用 [极海 GeoHey](https://geohey.com/)。
+- 多变量数据, 如种群计数
+ - 使用 [englewood](https://github.com/newsapps/englewood) 生成点密度图 [dot density map](http://demographics.coopercenter.org/DotMap/index.html)
+- 地名数据, 如国家或行政区划名称
+ - 有编码 ID:
+     - ISO2 或 ISO3 编码
          - 在 [Natural Earth](http://www.naturalearthdata.com/) 下载合适等级的数据, 使用 QGIS, 参照多边形数据处理
-      - 邮编
+     - 邮编
          - 在 [ZCTAs](https://www.census.gov/geo/reference/zctas.html) 下载数据
-    - 无编码
-      - 查找编码, 或手绘图形
-  - 地址数据
-    - 地址不能直接上图. 使用 [OpenRefine](http://openrefine.org/) 或
-      [Geo for Google Docs](https://www.mapbox.com/geo-for-google-docs/) 进行地址编码转换成点 , 然后参照点数据处理
-    - 其他的编码服务:
-      - US: [US Census](http://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.pdf)
-      - Canada: [Geogratis](http://geogratis.gc.ca/site/eng/geoloc)
-      - OpenStreetMap: [Nominatim](http://nominatim.openstreetmap.org/)
-      - [Data Science Toolkit](https://github.com/petewarden/dstk) 
+  - 无编码
+     - 查找编码, 或手绘图形
+- 地址数据
+  - 地址不能直接上图. 使用 [OpenRefine](http://openrefine.org/) 或
+    [Geo for Google Docs](https://www.mapbox.com/geo-for-google-docs/) 进行地址编码转换成点 , 然后参照点数据处理
+  - 地理编码服务
+     - US: [US Census](http://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.pdf)
+     - Canada: [Geogratis](http://geogratis.gc.ca/site/eng/geoloc)
+     - OpenStreetMap: [Nominatim](http://nominatim.openstreetmap.org/)
+     - [Data Science Toolkit](https://github.com/petewarden/dstk) 
+  - 地理编码库
+      - node - [node geocoder](http://nchaulet.github.io/node-geocoder/)
+      - Perl - [Geo::Coder::Many](https://metacpan.org/pod/Geo::Coder::Many)
+      - PHP - [Geocoder PHP](http://geocoder-php.org)
+      - Python - [geopy](https://github.com/geopy/geopy)
+      - Ruby - [Ruby Geocoder](http://www.rubygeocoder.com)
 
 ### 线
 
@@ -101,7 +107,7 @@
   - [中国25万数据](http://hcl.harvard.edu/libraries/maps/collections/series_indices/China_Index.html)
  
 - 其他专题数据
-   - [航空数据](http://www.openflights.org/data.html) 
+  - [航空数据](http://www.openflights.org/data.html) 
   
 ### 可视化配置
 
